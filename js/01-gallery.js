@@ -21,6 +21,7 @@ const makeGalleryElement = ({preview, original, description }) => {
 const makeImageGallery = galleryItems.map(makeGalleryElement).join(" ");
 galleryBox.insertAdjacentHTML("afterbegin", makeImageGallery);
 
+
 galleryBox.addEventListener('click', onOpenGalleryElement);
 
 function onOpenGalleryElement(event) {
