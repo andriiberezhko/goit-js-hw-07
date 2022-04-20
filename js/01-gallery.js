@@ -29,13 +29,26 @@ function onOpenGalleryElement(event) {
     if (event.target.nodeName !== 'IMG') {
     return;
     }
+    
     const newSrc = event.target.dataset.source;
     const html = `<img width="1400" height="900" src="${newSrc}">`;
     
-    const modal = basicLightbox.create(html, newSrc);
-    openModal(modal);
+    const modal = basicLightbox.create(html, { 
+        closable: true,
+        onShow: () => { window.addEventListener('keydown', pressEscBtn) } ,
+        onClose: () => { window.removeEventListener('keydown', pressEscBtn) }
+    });
     
-    closeModalByEsc(modal);
+    
+    openModal(modal);
+   
+    function pressEscBtn(event) {
+        
+        if (event.code === 'Escape') {
+        modal.close();
+        
+    };
+}
 
 }
 
@@ -43,15 +56,5 @@ function openModal(open) {
     open.show();
    
 }
-function closeModalByEsc(close) {
-    if (close.visible()) {
-        window.addEventListener('keydown', pressEscBtn)
-    }
-}
 
-function pressEscBtn(event) {
-    if (event.code === 'Escape') {
-        document.querySelector('.basicLightbox').remove();
-        
-    }
-}
+

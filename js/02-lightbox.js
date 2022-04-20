@@ -15,19 +15,8 @@ const makeGalleryElement = ({preview, original, description }) => {
 const makeImageGallery = galleryItems.map(makeGalleryElement).join(" ");
 galleryBox.insertAdjacentHTML("afterbegin", makeImageGallery);
 
+const lightbox = new SimpleLightbox('.gallery a', {captionsData: "alt", captionDelay: "250"});
+lightbox.open();
 
-galleryBox.addEventListener('click', onOpenGalleryElement);
 
-function onOpenGalleryElement(event) {
-    event.preventDefault();
-    if (event.target.nodeName !== 'IMG') {
-    return;
-    }
-    const lightbox = new SimpleLightbox('.gallery a', {captionsData: "alt", captionDelay: "250"});
-    console.dir(lightbox);
-    lightbox.open();
-    
-    
-
-}
 
