@@ -43,18 +43,16 @@ function onOpenGalleryElement(event) {
     openModal(modal);
    
     function pressEscBtn(event) {
-        
         if (event.code === 'Escape') {
         modal.close();
-        
+         };
     };
-}
 
-}
+};
 
 function openModal(open) {
     open.show();
    
-}
+};
 
 
